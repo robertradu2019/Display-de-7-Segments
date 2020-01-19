@@ -12,7 +12,7 @@ void setup()
 }
  
 void display (int a, int b, int c, int d, int e, int f, int g)
-// Funcion del display
+// Variables de funcions del display, le utilitzarem per un display ràpid al void loop
 {
   digitalWrite (7,a);   
   digitalWrite (8,b);   
