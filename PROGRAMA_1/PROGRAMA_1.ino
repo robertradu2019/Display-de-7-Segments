@@ -1,7 +1,10 @@
+const int buttonPin = 2;
 int pausa=1000; 
- 
-void setup()
-{
+int buttonState = 0;
+
+void setup() {
+  
+  pinMode(buttonPin,INPUT);
   pinMode(7, OUTPUT);  
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
@@ -10,9 +13,8 @@ void setup()
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
 }
- 
 void display (int a, int b, int c, int d, int e, int f, int g)
-// Funcion del display
+// Variables de funcions del display, le utilitzarem per un display ràpid al void loop
 {
   digitalWrite (7,a);   
   digitalWrite (8,b);   
@@ -22,11 +24,25 @@ void display (int a, int b, int c, int d, int e, int f, int g)
   digitalWrite (12,f);
   digitalWrite (13,g);
 }
- 
-void loop() 
-// cada 1 i 0 representa els ints a-g declarats a void display
-{
-  display (1,1,1,1,1,1,0); // per el 0 
+void loop() {
+  
+  buttonState = digitalRead(buttonPin);
+
+  
+  if (buttonState == HIGH) {
+
+
+     pinMode(7,LOW);
+    pinMode(8,LOW);
+    pinMode(9,LOW);
+    pinMode(10,LOW);
+    pinMode(11,LOW);
+    pinMode(12,LOW);
+    pinMode(13,LOW);
+  }
+  else{
+    
+    display (1,1,1,1,1,1,0); // per el 0 
   delay(pausa);
   display (0,1,1,0,0,0,0); //per el 1
   delay(pausa);
@@ -46,5 +62,9 @@ void loop()
   delay(pausa);
   display (1,1,1,0,0,1,1); // per el 9
   delay(pausa);
+  
+   
+  }
 }
- 
+
+//per acabar, falta el stop 
